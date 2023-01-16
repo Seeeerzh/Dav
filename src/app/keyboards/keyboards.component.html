@@ -1,0 +1,23 @@
+<h2>My Keyboards</h2>
+
+<div>
+  <label for="new-keyboard">Keyboard name: </label>
+  <input id="new-keyboard" #keyboardName />
+  <label for="new-img">URL: </label>
+  <input id="new-img" #url />
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button type="button" class="add-button" (click)="add(keyboardName.value,  url.value); keyboardName.value=''; url.value=''">
+    Add keyboard
+  </button>
+</div>
+
+<ul class="keyboards">
+  <li *ngFor="let keyboard of keyboards">
+    <a routerLink="/detail/{{keyboard.id}}">
+      <span class="badge">{{keyboard.id}}</span> <span> {{keyboard.name}} </span> <img src={{keyboard.image}} alt="Keyboard" height="20 em"  />
+    </a>
+    <button type="button" class="delete" title="delete keyboard"
+    (click)="delete(keyboard)">x</button>
+  </li>
+</ul>
+
